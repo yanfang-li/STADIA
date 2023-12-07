@@ -1,0 +1,6 @@
+ bibentry(
+  bibtype  = "Manual",
+  title    = "Statistical batch-aware embedded integration, dimension reduction and alignment for spatial transcriptomics",
+  author   = "Yanfang Li and Shihua Zhang",
+  year = "2023"
+)

@@ -1,0 +1,42 @@
+url: https://yanfang-li.github.io/stadia/
+template:
+  params:
+    bootswatch: flatly
+bslib:
+  code_font:
+    google: JetBrains Mono
+reference:
+- title: Main functions
+  contents:
+  - HyperParameters
+  - stadia
+- title: Other Functions
+  contents:
+  - InitiParameters
+  - PreprocessData
+  - mnn_adjacent
+navbar:
+  type: default
+  left:
+  - icon: fa-home
+    href: index.html
+  - text: Get started
+    href: articles/stadia.html
+  - text: Reference
+    href: reference/index.html
+  - text: Applications
+    menu:
+    - text: DLPFC12 (Maynard et al., 2021)
+      href: articles/dlpfc12.html
+    - text: MLIVER8 (Hildebrandt et al., 2021)
+      href: articles/mliver8.html
+    - text: SCC12 (Ji et al., 2020)
+      href: articles/scc12.html
+    - text: MHIPP2 (Stickels et al., 2021)
+      href: articles/mhipp2.html
+  - text: Changelog
+    href: news/index.html
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/yanfang-li/stadia
+

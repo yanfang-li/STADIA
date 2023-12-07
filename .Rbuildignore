@@ -1,0 +1,13 @@
+^stadia\.Rproj$
+^\.Rproj\.user$
+^README\.Rmd$
+^doc$
+^Meta$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^LICENSE\.md$
+^\.github$
+^readme\.md$
+^news\.md$
+^vignettes/articles$

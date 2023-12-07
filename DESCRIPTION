@@ -1,0 +1,46 @@
+Package: stadia
+Type: Package
+Title: Statistical Batch-Aware Embedded Integration, Dimension Reduction and Alignment for Spatial Transcriptomics
+Version: 1.0.0
+Authors@R: 
+    person("Yanfang", "Li", role = c("aut", "cre"), email="liyanfang1110@gmail.com")
+Description: Integrate multi-source spatial transcriptomics data sets.
+Depends: R (>= 3.5.0)
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports: 
+    Seurat, 
+    mclust, 
+    irlba, 
+    Matrix, 
+    mombf, 
+    Rcpp, 
+    methods,
+    progress,
+    BiocSingular, 
+    BiocParallel, 
+    BiocNeighbors
+LinkingTo: 
+    Rcpp, 
+    RcppArmadillo,
+    RcppDist
+Collate: 
+    'RcppExports.R'
+    'main.R'
+    'stadia-package.R'
+    'utils_findMNN.R'
+    'utils_internfunc.R'
+    'utils_functions.R'
+Suggests: 
+    covr,
+    ggplot2,
+    knitr,
+    patchwork,
+    rmarkdown,
+    stringr
+VignetteBuilder: knitr
+URL: https://github.com/yanfang-li/stadia,
+    https://yanfang-li.github.io/stadia/
+BugReports: https://github.com/yanfang-li/stadia/issues
