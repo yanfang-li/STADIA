@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# STADIA <img src="man/figures/logo.png" align="right" width="115" />
+# STADIA <img src="man/figures/logo.png" align="right" width="160" />
 
 <!--[![R-CMD-check](https://github.com/yanfang-li/stadia/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/yanfang-li/stadia/actions/workflows/R-CMD-check.yaml)
 <!-- [![Codecov test coverage](https://codecov.io/gh/yanfang-li/stadia/branch/master/graph/badge.svg)](https://app.codecov.io/gh/yanfang-li/stadia?branch=master) -->
@@ -12,18 +12,18 @@ Version](https://www.r-pkg.org/badges/version/stadia)](https://cran.r-project.or
 ## Overview
 
 STADIA is designed to integrate multiple spatial transcriptomics slices,
-which simultaneously realize
+which simultaneously achieve
 
 - dimension reduction
 - batch effects correction
 - spatial domains identification
 
-Overall, STADIA is a Bayesian hierarchical Hidden Markov Random Field
+Overall, STADIA is a Bayesian hierarchical hidden Markov random field
 model that first uses Bayesian factor regression and location-and-scale
 adjustment to learn a batch-corrected low-dimensional representation of
-the gene expression profiles, and then spatially clusters the embeddings
-using a Gaussian mixture model with a Potts model spatial prior to
-promote local consistency.
+the gene expression profiles, and then spatially clusters the embedding
+using a Gaussian mixture model with a Potts spatial prior to promote
+local consistency.
 
 ## Installation
 
@@ -35,7 +35,7 @@ install.packages("stadia")
 ```
 &#10;or install the development version from GitHub with:-->
 
-Firstly, make sure all dependences are available:
+First, make sure all dependencies are available:
 
 ``` r
 dependencies <- c('Seurat','mclust','irlba','mombf','progress','Rcpp','BiocSingular','BiocParallel','BiocNeighbors','RcppArmadillo','RcppDist')
@@ -48,7 +48,7 @@ if (!requireNamespace("BiocManager", quietly = TRUE))
 BiocManager::install(dependencies[!(dependencies %in% row.names(installed.packages())) & !(dependencies %in% row.names(ap))])
 ```
 
-Then install stadia package from GitHub with:
+Install the stadia package from GitHub:
 
 ``` r
 # Install released version from github
@@ -58,23 +58,23 @@ if (!requireNamespace("devtools", quietly = TRUE))
 devtools::install_github("yanfang-li/stadia")
 ```
 
-or install stadia from source in the terminal:
+or from the source in the terminal:
 
 ``` r
 R CMD INSTALL stadia_1.0.0.tar.gz
 ```
 
-stadia package has been built and tested on the following operating
+The stadia package has been built and tested on the following operating
 system:
 
-- Windows: 10, version 22H2 \[Rtools needed\]
+- Windows: 10, version 22H2 \[Rtools required\]
 - Linux: Ubuntu 20.04.4 LTS
-- macOS: Monterey 12.7.1 (Apple M1), Monterry 12.0.1 (Intel Core i7)
+- MacOS: Monterey 12.7.1 (Apple M1), Monterey 12.0.1 (Intel Core i7)
 
-## Setup for installing the stadia package on masOS.
+## Setup to install the stadia package on MacOS.
 
-As stadia package uses C++ and openmp, some additional configuration is
-required to install the stadia package from source on macOS. For
+Since the stadia package uses C++ and openmp, some additional
+configuration is required to install it from source on MacOS. For
 details, please refer to the following steps:
 
 1.  Install **Command Line Tools for Xcode** from
@@ -85,7 +85,7 @@ details, please refer to the following steps:
 3.  Install gcc using **brew install gcc**.
 4.  Install LLVM using **brew install llvm**.
 5.  Install libomp package using **brew install libomp**.
-6.  Make file **~/.R/Makevars**: (all paths need to be replaced with the
+6.  Make file **~/.R/Makevars**: (all paths must to be replaced with the
     paths on your own computer)
 
 ``` bash
@@ -118,8 +118,9 @@ FLIBS=-L$(GCC_LOC)/lib/gcc/11/ -lm
 
 ## Steps to use
 
-The main steps to run STADIA algorithm using *stadia* package are (It is
-recommended to run in the server background for big data)
+The main steps to run the STADIA algorithm using the *stadia* package
+are (it is recommended to run in the server background for large data
+sets)
 
 ``` r
 ## load packages
@@ -141,10 +142,10 @@ where
 
 ## Demonstration
 
-Files in
+Files in the
 [Applications](https://yanfang-li.github.io/stadia/articles/stadia.html)
-demonstrate how to use the stadia package to execute the STADIA
-algorithm in the `Run Model` section.
+demonstrate how to use the stadia package to run the STADIA algorithm in
+the `Run` section.
 
 ## Paper Citation
 
