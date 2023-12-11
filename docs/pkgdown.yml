@@ -1,0 +1,14 @@
+pandoc: 3.1.1
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  dlpfc12: dlpfc12.html
+  mhipp2: mhipp2.html
+  mliver8: mliver8.html
+  scc12: scc12.html
+  stadia: stadia.html
+last_built: 2023-12-11T12:31Z
+urls:
+  reference: https://yanfang-li.github.io/stadia/reference
+  article: https://yanfang-li.github.io/stadia/articles
+
