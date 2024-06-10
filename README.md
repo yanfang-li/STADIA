@@ -143,7 +143,7 @@ where
 ## Demonstration
 
 Files in the
-[Applications](https://yanfang-li.github.io/stadia/articles/stadia.html)
+[Applications](https://yanfang-li.github.io/STADIA/articles/stadia.html)
 demonstrate how to use the stadia package to run the STADIA algorithm in
 the `Run` section.
 
