@@ -55,7 +55,7 @@ Install the stadia package from GitHub:
 if (!requireNamespace("devtools", quietly = TRUE))
     install.packages("devtools")
 
-devtools::install_github("yanfang-li/stadia")
+devtools::install_github("yanfang-li/STADIA")
 ```
 
 or from the source in the terminal:
