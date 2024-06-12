@@ -15,12 +15,12 @@ Remots:
     bioc::BiocParallel, 
     bioc::BiocNeighbors
     bioc::sparseMatrixStats
+    cran::mombf
 Imports: 
     Seurat, 
     mclust, 
     irlba, 
-    Matrix, 
-    mombf, 
+    Matrix,  
     Rcpp, 
     methods,
     progress

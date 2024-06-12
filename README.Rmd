@@ -43,38 +43,42 @@ or install the development version from GitHub with:-->
 
 
 It's recommended to create a separate `conda` environment for running STADIA:
-```r
+```{r, eval=FALSE}
 conda create -n env_stadia -c conda-forge r-base r-essentials
 conda activate env_stadia
 ```
 
-First, make sure all dependencies are available:
+<!-- First, make sure all dependencies are available: -->
 
-```{r, eval=FALSE}
-dependencies <- c('Seurat','mclust','irlba','mombf','progress','Rcpp','BiocSingular','BiocParallel','BiocNeighbors','RcppArmadillo','RcppDist')
+<!-- ```{r, eval=FALSE} -->
+<!-- dependencies <- c('Seurat','mclust','irlba','mombf','progress','Rcpp','BiocSingular','BiocParallel','BiocNeighbors','RcppArmadillo','RcppDist') -->
 
-ap <- available.packages()
-install.packages(dependencies[!(dependencies %in% row.names(installed.packages())) & (dependencies %in% row.names(ap))])
+<!-- ap <- available.packages() -->
+<!-- install.packages(dependencies[!(dependencies %in% row.names(installed.packages())) & (dependencies %in% row.names(ap))]) -->
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-BiocManager::install(dependencies[!(dependencies %in% row.names(installed.packages())) & !(dependencies %in% row.names(ap))])
-```
+<!-- if (!requireNamespace("BiocManager", quietly = TRUE)) -->
+<!--     install.packages("BiocManager") -->
+<!-- BiocManager::install(dependencies[!(dependencies %in% row.names(installed.packages())) & !(dependencies %in% row.names(ap))]) -->
+<!-- ``` -->
 
-Install the stadia package from GitHub:
+Install the stadia package from GitHub (may take some time):
 
 ```{r, eval=FALSE}
 # Install released version from github
-if (!requireNamespace("devtools", quietly = TRUE))
-    install.packages("devtools")
-
-devtools::install_github("yanfang-li/stadia")
+if (!requireNamespace("remotes", quietly = TRUE))
+    install.packages("remotes")
+remotes::install_github("yanfang-li/STADIA")
 ```
 
 or from the source in the terminal:
 
 ```{r, eval=FALSE}
 R CMD INSTALL stadia_1.0.0.tar.gz
+```
+
+or from CRAN:
+```{r, eval=FALSE}
+install.packages("stadia")
 ```
 
 The stadia package has been built and tested on the following operating system:
