@@ -13,8 +13,8 @@ RoxygenNote: 7.2.3
 Remots:
     bioc::BiocSingular, 
     bioc::BiocParallel, 
-    bioc::BiocNeighbors
-    bioc::sparseMatrixStats 
+    bioc::BiocNeighbors,
+    bioc::sparseMatrixStats
 Imports: 
     Seurat, 
     mclust, 
