@@ -13,8 +13,7 @@ RoxygenNote: 7.2.3
 Remots:
     bioc::BiocSingular, 
     bioc::BiocParallel, 
-    bioc::BiocNeighbors,
-    github::const-ae/sparseMatrixStats
+    bioc::BiocNeighbors
 Imports: 
     Seurat, 
     mclust, 
@@ -23,6 +22,7 @@ Imports:
     Rcpp, 
     methods,
     progress,
+    sparseMatrixStats,
     mombf
 LinkingTo: 
     Rcpp, 
