@@ -14,8 +14,7 @@ Remots:
     bioc::BiocSingular, 
     bioc::BiocParallel, 
     bioc::BiocNeighbors
-    bioc::sparseMatrixStats
-    cran::mombf
+    bioc::sparseMatrixStats 
 Imports: 
     Seurat, 
     mclust, 
@@ -23,7 +22,8 @@ Imports:
     Matrix,  
     Rcpp, 
     methods,
-    progress
+    progress,
+    mombf
 LinkingTo: 
     Rcpp, 
     RcppArmadillo,

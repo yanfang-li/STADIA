@@ -25,6 +25,9 @@ the gene expression profiles, and then spatially clusters the embedding
 using a Gaussian mixture model with a Potts spatial prior to promote
 local consistency.
 
+The homepage for the R package stadia can be accessed at:
+<https://yanfang-li.github.io/STADIA/index.html>
+
 ## Installation
 
 <!-- Install the released version of stadia R package from CRAN:
@@ -62,13 +65,16 @@ if (!requireNamespace("remotes", quietly = TRUE))
 remotes::install_github("yanfang-li/STADIA")
 ```
 
-or from the source in the terminal:
+or from the source in the terminal ( [Package
+source](https://drive.google.com/file/d/1_ApLsFLm60Bpf7VQnOE6ZxFSsSil4zHN/view?usp=drive_link)):
 
 ``` r
 R CMD INSTALL stadia_1.0.0.tar.gz
 ```
 
-or from CRAN:
+or from precompiled binary package ([Windows
+binaries](https://drive.google.com/file/d/1tr6HkGJ_o2mdHGSHAO27qgaATJxCkTIk/view?usp=drive_link),
+[macOS binaries]()):
 
 ``` r
 install.packages("stadia")
@@ -81,7 +87,7 @@ system:
 - Linux: Ubuntu 20.04.4 LTS
 - MacOS: Monterey 12.7.1 (Apple M1), Monterey 12.0.1 (Intel Core i7)
 
-## Setup to install the stadia package on MacOS.
+## Setup to install source package stadia on MacOS.
 
 Since the stadia package uses C++ and openmp, some additional
 configuration is required to install it from source on MacOS. For
@@ -153,12 +159,12 @@ where
 ## Demonstration
 
 Files in the
-[Applications](https://yanfang-li.github.io/stadia/articles/stadia.html)
+[Applications](https://yanfang-li.github.io/STADIA/articles/stadia.html)
 demonstrate how to use the stadia package to run the STADIA algorithm in
 the `Run` section.
 
 ## Paper Citation
 
-Yanfang Li and Shihua Zhang (2023+). “Statistical batch-aware embedded
+Yanfang Li and Shihua Zhang (2024+). “Statistical batch-aware embedded
 integration, dimension reduction and alignment for spatial
 transcriptomics”.
