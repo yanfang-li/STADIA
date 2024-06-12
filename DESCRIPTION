@@ -10,6 +10,11 @@ License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Remots:
+    bioc::BiocSingular, 
+    bioc::BiocParallel, 
+    bioc::BiocNeighbors
+    bioc::sparseMatrixStats
 Imports: 
     Seurat, 
     mclust, 
@@ -18,10 +23,7 @@ Imports:
     mombf, 
     Rcpp, 
     methods,
-    progress,
-    BiocSingular, 
-    BiocParallel, 
-    BiocNeighbors
+    progress
 LinkingTo: 
     Rcpp, 
     RcppArmadillo,

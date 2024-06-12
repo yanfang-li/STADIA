@@ -35,6 +35,14 @@ install.packages("stadia")
 ```
 &#10;or install the development version from GitHub with:-->
 
+It’s recommended to create a separate `conda` environment for running
+STADIA:
+
+``` r
+conda create -n env_stadia -c conda-forge r-base r-essentials
+conda activate env_stadia
+```
+
 First, make sure all dependencies are available:
 
 ``` r
@@ -55,7 +63,7 @@ Install the stadia package from GitHub:
 if (!requireNamespace("devtools", quietly = TRUE))
     install.packages("devtools")
 
-devtools::install_github("yanfang-li/STADIA")
+devtools::install_github("yanfang-li/stadia")
 ```
 
 or from the source in the terminal:
@@ -143,7 +151,7 @@ where
 ## Demonstration
 
 Files in the
-[Applications](https://yanfang-li.github.io/STADIA/articles/stadia.html)
+[Applications](https://yanfang-li.github.io/stadia/articles/stadia.html)
 demonstrate how to use the stadia package to run the STADIA algorithm in
 the `Run` section.
 

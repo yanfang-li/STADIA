@@ -41,6 +41,13 @@ install.packages("stadia")
 
 or install the development version from GitHub with:-->
 
+
+It's recommended to create a separate `conda` environment for running STADIA:
+```r
+conda create -n env_stadia -c conda-forge r-base r-essentials
+conda activate env_stadia
+```
+
 First, make sure all dependencies are available:
 
 ```{r, eval=FALSE}
