@@ -26,7 +26,7 @@ using a Gaussian mixture model with a Potts spatial prior to promote
 local consistency.
 
 The homepage for the R package stadia can be accessed at:
-<https://yanfang-li.github.io/STADIA/index.html>
+<https://yanfang-li.github.io/STADIA/index.html>.
 
 ## Installation
 

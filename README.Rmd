@@ -30,7 +30,7 @@ STADIA is designed to integrate multiple spatial transcriptomics slices, which s
 
 Overall, STADIA is a Bayesian hierarchical hidden Markov random field model that first uses Bayesian factor regression and location-and-scale adjustment to learn a batch-corrected low-dimensional representation of the gene expression profiles, and then spatially clusters the embedding using a Gaussian mixture model with a Potts spatial prior to promote local consistency.
 
-The homepage for the R package stadia can be accessed at: [https://yanfang-li.github.io/STADIA/index.html](https://yanfang-li.github.io/STADIA/index.html)
+The homepage for the R package stadia can be accessed at: [https://yanfang-li.github.io/STADIA/index.html](https://yanfang-li.github.io/STADIA/index.html).
 
 ## Installation
 

@@ -14,7 +14,7 @@ Remots:
     bioc::BiocSingular, 
     bioc::BiocParallel, 
     bioc::BiocNeighbors,
-    bioc::sparseMatrixStats
+    github::const-ae/sparseMatrixStats
 Imports: 
     Seurat, 
     mclust, 
