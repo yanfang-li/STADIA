@@ -21,8 +21,7 @@ Imports:
     Matrix,  
     Rcpp, 
     methods,
-    progress,
-    sparseMatrixStats,
+    progress, 
     mombf
 LinkingTo: 
     Rcpp, 

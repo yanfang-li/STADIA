@@ -56,6 +56,16 @@ conda activate env_stadia
 <!-- BiocManager::install(dependencies[!(dependencies %in% row.names(installed.packages())) & !(dependencies %in% row.names(ap))]) -->
 <!-- ``` -->
 
+The `stadia`’s dependency package `mombf` depends on
+`sparseMatrixStats`, which sometimes cannot be installed automatically,
+so we install `sparseMatrixStats` first to prevent errors later:
+
+``` r
+if (!requireNamespace("remotes", quietly = TRUE))
+    install.packages("BiocManager")
+BiocManager::install("sparseMatrixStats")
+```
+
 Install the stadia package from GitHub (may take some time):
 
 ``` r
