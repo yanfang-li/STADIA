@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">stadia</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -118,6 +118,7 @@
 <li>spatial domains identification</li>
 </ul>
 <p>Overall, STADIA is a Bayesian hierarchical hidden Markov random field model that first uses Bayesian factor regression and location-and-scale adjustment to learn a batch-corrected low-dimensional representation of the gene expression profiles, and then spatially clusters the embedding using a Gaussian mixture model with a Potts spatial prior to promote local consistency.</p>
+<p>The homepage for the R package stadia can be accessed at: <a href="https://yanfang-li.github.io/STADIA/index.html" class="external-link uri">https://yanfang-li.github.io/STADIA/index.html</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -129,25 +130,40 @@
 install.packages("stadia")
 ```
 &#10;or install the development version from GitHub with:-->
-<p>First, make sure all dependencies are available:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">dependencies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'Seurat'</span>,<span class="st">'mclust'</span>,<span class="st">'irlba'</span>,<span class="st">'mombf'</span>,<span class="st">'progress'</span>,<span class="st">'Rcpp'</span>,<span class="st">'BiocSingular'</span>,<span class="st">'BiocParallel'</span>,<span class="st">'BiocNeighbors'</span>,<span class="st">'RcppArmadillo'</span>,<span class="st">'RcppDist'</span><span class="op">)</span></span>
-<span></span>
-<span><span class="va">ap</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/available.packages.html" class="external-link">available.packages</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="va">dependencies</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="va">dependencies</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">(</span><span class="va">dependencies</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">ap</span><span class="op">)</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span>
-<span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
-<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="va">dependencies</span><span class="op">[</span><span class="op">!</span><span class="op">(</span><span class="va">dependencies</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html" class="external-link">installed.packages</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">&amp;</span> <span class="op">!</span><span class="op">(</span><span class="va">dependencies</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/row.names.html" class="external-link">row.names</a></span><span class="op">(</span><span class="va">ap</span><span class="op">)</span><span class="op">)</span><span class="op">]</span><span class="op">)</span></span></code></pre></div>
-<p>Install the stadia package from GitHub:</p>
+<p>It’s recommended to create a separate <code>conda</code> environment for running STADIA:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>conda create <span class="sc">-</span>n env_stadia <span class="sc">-</span>c conda<span class="sc">-</span>forge r<span class="sc">-</span>base r<span class="sc">-</span>essentials</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>conda activate env_stadia</span></code></pre></div>
+<!-- First, make sure all dependencies are available: -->
+<!-- ```{r, eval=FALSE} -->
+<!-- dependencies <- c('Seurat','mclust','irlba','mombf','progress','Rcpp','BiocSingular','BiocParallel','BiocNeighbors','RcppArmadillo','RcppDist') -->
+<!-- ap <- available.packages() -->
+<!-- install.packages(dependencies[!(dependencies %in% row.names(installed.packages())) & (dependencies %in% row.names(ap))]) -->
+<!-- if (!requireNamespace("BiocManager", quietly = TRUE)) -->
+<!--     install.packages("BiocManager") -->
+<!-- BiocManager::install(dependencies[!(dependencies %in% row.names(installed.packages())) & !(dependencies %in% row.names(ap))]) -->
+<!-- ``` -->
+<p>It is a good practice to install Bioconductor dependencies before installing package <code>stadia</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Install Bioconductor packages</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span> </span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"BiocSingular"</span>, <span class="st">"BiocParallel"</span>, <span class="st">"BiocNeighbors"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>The <code>stadia</code>’s dependency package <code>mombf</code> depends on <code>sparseMatrixStats</code>, which sometimes cannot be installed automatically, so we install <code>sparseMatrixStats</code> first to prevent errors later:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/" class="external-link">"BiocManager"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"sparseMatrixStats"</span><span class="op">)</span></span></code></pre></div>
+<p>Install the stadia package from GitHub (may take some time):</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install released version from github</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"devtools"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"yanfang-li/stadia"</span><span class="op">)</span></span></code></pre></div>
-<p>or from the source in the terminal:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>R CMD INSTALL stadia_1.<span class="dv">0</span>.<span class="fl">0.</span>tar.gz</span></code></pre></div>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"remotes"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
+<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"yanfang-li/STADIA"</span><span class="op">)</span></span></code></pre></div>
+<p>or from the source in the terminal ( <a href="https://drive.google.com/file/d/1JUkFWkb-fKyWG7p3n4rGdOjXKknI3Tq8/view?usp=drive_link" class="external-link">Package source</a>):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>R CMD INSTALL stadia_1.<span class="dv">0</span>.<span class="fl">1.</span>tar.gz</span></code></pre></div>
+<p>or from precompiled binary package (<a href="https://drive.google.com/file/d/1itMLR9-o1PT9ZV0P5PeorZeK8ogHHjXz/view?usp=drive_link" class="external-link">Windows binaries</a>):</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"stadia"</span><span class="op">)</span></span></code></pre></div>
 <p>The stadia package has been built and tested on the following operating system:</p>
 <ul>
 <li>Windows: 10, version 22H2 [Rtools required]</li>
@@ -156,7 +172,7 @@ install.packages("stadia")
 </ul>
 </div>
 <div class="section level2">
-<h2 id="setup-to-install-the-stadia-package-on-macos">Setup to install the stadia package on MacOS.<a class="anchor" aria-label="anchor" href="#setup-to-install-the-stadia-package-on-macos"></a>
+<h2 id="setup-to-install-source-package-stadia-on-macos">Setup to install source package stadia on MacOS.<a class="anchor" aria-label="anchor" href="#setup-to-install-source-package-stadia-on-macos"></a>
 </h2>
 <p>Since the stadia package uses C++ and openmp, some additional configuration is required to install it from source on MacOS. For details, please refer to the following steps:</p>
 <ol style="list-style-type: decimal">
@@ -167,37 +183,37 @@ install.packages("stadia")
 <li>Install libomp package using <strong>brew install libomp</strong>.</li>
 <li>Make file <strong>~/.R/Makevars</strong>: (all paths must to be replaced with the paths on your own computer)</li>
 </ol>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="co"># MacOS Xcode header location</span></span>
-<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="co"># (do "xcrun -show-sdk-path" in terminal to get path)</span></span>
-<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="ex">XC_LOC</span> = /Applications/Xcode.13.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk</span>
-<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co"># (do "echo $(brew --prefix **)" in terminal to get path)</span></span>
-<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="ex">LLVM_LOC</span> = /opt/homebrew/opt/llvm</span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="ex">GCC_LOC</span> = /opt/homebrew/Cellar/gcc/12.2.0</span>
-<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="ex">GETTEXT_LOC</span> = /opt/homebrew/opt/gettext</span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="va">OMP_LOC</span><span class="op">=</span> <span class="ex">/opt/homebrew/opt/libomp</span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="va">OPENSSL_LOC</span><span class="op">=</span>/opt/homebrew/opt/openssl@1.1</span>
-<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="va">CC</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang</span>
-<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="va">CXX</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
-<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="va">CXX11</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
-<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="va">CXX14</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
-<span id="cb4-15"><a href="#cb4-15" tabindex="-1"></a><span class="va">CXX17</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
-<span id="cb4-16"><a href="#cb4-16" tabindex="-1"></a><span class="va">CXX1X</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
-<span id="cb4-17"><a href="#cb4-17" tabindex="-1"></a></span>
-<span id="cb4-18"><a href="#cb4-18" tabindex="-1"></a><span class="va">CFLAGS</span><span class="op">=</span>-g <span class="ex">-O2</span> <span class="at">-Wall</span> <span class="at">-pedantic</span> <span class="at">-std</span><span class="op">=</span>gnu99 <span class="at">-mtune</span><span class="op">=</span>native <span class="at">-pipe</span></span>
-<span id="cb4-19"><a href="#cb4-19" tabindex="-1"></a><span class="va">CXXFLAGS</span><span class="op">=</span>-g <span class="ex">-O2</span> <span class="at">-Wall</span> <span class="at">-pedantic</span> <span class="at">-std</span><span class="op">=</span>c++11 <span class="at">-mtune</span><span class="op">=</span>native <span class="at">-pipe</span></span>
-<span id="cb4-20"><a href="#cb4-20" tabindex="-1"></a><span class="va">LDFLAGS</span><span class="op">=</span>-L<span class="st">"</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span><span class="st">/lib"</span> <span class="ex">-L</span><span class="st">"</span><span class="va">$(</span><span class="ex">GETTEXT_LOC</span><span class="va">)</span><span class="st">/lib"</span> <span class="at">-Wl,-rpath,</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/lib <span class="at">--sysroot</span><span class="op">=</span><span class="st">"</span><span class="va">$(</span><span class="ex">XC_LOC</span><span class="va">)</span><span class="st">"</span> <span class="at">-lomp</span> <span class="at">-L</span><span class="st">"</span><span class="va">$(</span><span class="ex">OPENSSL_LOC</span><span class="va">)</span><span class="st">/lib"</span></span>
-<span id="cb4-21"><a href="#cb4-21" tabindex="-1"></a><span class="va">CPPFLAGS</span><span class="op">=</span>-I<span class="st">"</span><span class="va">$(</span><span class="ex">GETTEXT_LOC</span><span class="va">)</span><span class="st">/include"</span> <span class="ex">-I</span><span class="st">"</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span><span class="st">/include"</span> <span class="at">-I</span><span class="st">"</span><span class="va">$(</span><span class="ex">OMP_LOC</span><span class="va">)</span><span class="st">/include"</span> <span class="at">-isysroot</span> <span class="st">"</span><span class="va">$(</span><span class="ex">XC_LOC</span><span class="va">)</span><span class="st">"</span> <span class="at">-Xclang</span> <span class="at">-fopenmp</span> <span class="at">-I</span><span class="st">"</span><span class="va">$(</span><span class="ex">OPENSSL_LOC</span><span class="va">)</span><span class="st">/include"</span></span>
-<span id="cb4-22"><a href="#cb4-22" tabindex="-1"></a></span>
-<span id="cb4-23"><a href="#cb4-23" tabindex="-1"></a><span class="va">FC</span><span class="op">=</span><span class="va">$(</span><span class="ex">GCC_LOC</span><span class="va">)</span>/bin/gfortran</span>
-<span id="cb4-24"><a href="#cb4-24" tabindex="-1"></a><span class="va">F77</span><span class="op">=</span><span class="va">$(</span><span class="ex">GCC_LOC</span><span class="va">)</span>/bin/gfortran</span>
-<span id="cb4-25"><a href="#cb4-25" tabindex="-1"></a><span class="va">FLIBS</span><span class="op">=</span>-L<span class="va">$(</span><span class="ex">GCC_LOC</span><span class="va">)</span>/lib/gcc/11/ <span class="ex">-lm</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># MacOS Xcode header location</span></span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="co"># (do "xcrun -show-sdk-path" in terminal to get path)</span></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="ex">XC_LOC</span> = /Applications/Xcode.13.4.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="co"># (do "echo $(brew --prefix **)" in terminal to get path)</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="ex">LLVM_LOC</span> = /opt/homebrew/opt/llvm</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="ex">GCC_LOC</span> = /opt/homebrew/Cellar/gcc/12.2.0</span>
+<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="ex">GETTEXT_LOC</span> = /opt/homebrew/opt/gettext</span>
+<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="va">OMP_LOC</span><span class="op">=</span> <span class="ex">/opt/homebrew/opt/libomp</span></span>
+<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="va">OPENSSL_LOC</span><span class="op">=</span>/opt/homebrew/opt/openssl@1.1</span>
+<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="va">CC</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang</span>
+<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="va">CXX</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="va">CXX11</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="va">CXX14</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="va">CXX17</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="va">CXX1X</span><span class="op">=</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/bin/clang++</span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="va">CFLAGS</span><span class="op">=</span>-g <span class="ex">-O2</span> <span class="at">-Wall</span> <span class="at">-pedantic</span> <span class="at">-std</span><span class="op">=</span>gnu99 <span class="at">-mtune</span><span class="op">=</span>native <span class="at">-pipe</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="va">CXXFLAGS</span><span class="op">=</span>-g <span class="ex">-O2</span> <span class="at">-Wall</span> <span class="at">-pedantic</span> <span class="at">-std</span><span class="op">=</span>c++11 <span class="at">-mtune</span><span class="op">=</span>native <span class="at">-pipe</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="va">LDFLAGS</span><span class="op">=</span>-L<span class="st">"</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span><span class="st">/lib"</span> <span class="ex">-L</span><span class="st">"</span><span class="va">$(</span><span class="ex">GETTEXT_LOC</span><span class="va">)</span><span class="st">/lib"</span> <span class="at">-Wl,-rpath,</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span>/lib <span class="at">--sysroot</span><span class="op">=</span><span class="st">"</span><span class="va">$(</span><span class="ex">XC_LOC</span><span class="va">)</span><span class="st">"</span> <span class="at">-lomp</span> <span class="at">-L</span><span class="st">"</span><span class="va">$(</span><span class="ex">OPENSSL_LOC</span><span class="va">)</span><span class="st">/lib"</span></span>
+<span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="va">CPPFLAGS</span><span class="op">=</span>-I<span class="st">"</span><span class="va">$(</span><span class="ex">GETTEXT_LOC</span><span class="va">)</span><span class="st">/include"</span> <span class="ex">-I</span><span class="st">"</span><span class="va">$(</span><span class="ex">LLVM_LOC</span><span class="va">)</span><span class="st">/include"</span> <span class="at">-I</span><span class="st">"</span><span class="va">$(</span><span class="ex">OMP_LOC</span><span class="va">)</span><span class="st">/include"</span> <span class="at">-isysroot</span> <span class="st">"</span><span class="va">$(</span><span class="ex">XC_LOC</span><span class="va">)</span><span class="st">"</span> <span class="at">-Xclang</span> <span class="at">-fopenmp</span> <span class="at">-I</span><span class="st">"</span><span class="va">$(</span><span class="ex">OPENSSL_LOC</span><span class="va">)</span><span class="st">/include"</span></span>
+<span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a></span>
+<span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="va">FC</span><span class="op">=</span><span class="va">$(</span><span class="ex">GCC_LOC</span><span class="va">)</span>/bin/gfortran</span>
+<span id="cb7-24"><a href="#cb7-24" tabindex="-1"></a><span class="va">F77</span><span class="op">=</span><span class="va">$(</span><span class="ex">GCC_LOC</span><span class="va">)</span>/bin/gfortran</span>
+<span id="cb7-25"><a href="#cb7-25" tabindex="-1"></a><span class="va">FLIBS</span><span class="op">=</span>-L<span class="va">$(</span><span class="ex">GCC_LOC</span><span class="va">)</span>/lib/gcc/11/ <span class="ex">-lm</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="steps-to-use">Steps to use<a class="anchor" aria-label="anchor" href="#steps-to-use"></a>
 </h2>
 <p>The main steps to run the STADIA algorithm using the <em>stadia</em> package are (it is recommended to run in the server background for large data sets)</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## load packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/yanfang-li/stadia" class="external-link">stadia</a></span><span class="op">)</span></span>
 <span><span class="co">## set hyperparameters</span></span>
@@ -217,12 +233,12 @@ install.packages("stadia")
 <div class="section level2">
 <h2 id="demonstration">Demonstration<a class="anchor" aria-label="anchor" href="#demonstration"></a>
 </h2>
-<p>Files in the <a href="https://yanfang-li.github.io/stadia/articles/stadia.html">Applications</a> demonstrate how to use the stadia package to run the STADIA algorithm in the <code>Run</code> section.</p>
+<p>Files in the <a href="https://yanfang-li.github.io/STADIA/articles/stadia.html" class="external-link">Applications</a> demonstrate how to use the stadia package to run the STADIA algorithm in the <code>Run</code> section.</p>
 </div>
 <div class="section level2">
 <h2 id="paper-citation">Paper Citation<a class="anchor" aria-label="anchor" href="#paper-citation"></a>
 </h2>
-<p>Yanfang Li and Shihua Zhang (2023+). “Statistical batch-aware embedded integration, dimension reduction and alignment for spatial transcriptomics”.</p>
+<p>Yanfang Li and Shihua Zhang (2024+). “Statistical batch-aware embedded integration, dimension reduction and alignment for spatial transcriptomics”.</p>
 </div>
 </div>
   </div>

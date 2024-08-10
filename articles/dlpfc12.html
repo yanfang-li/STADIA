@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">stadia</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -169,7 +169,7 @@ of STADIA <em>dlpfc12_stadia</em> in it.</p>
 <span>    x <span class="op">=</span> <span class="va">dlpfc.pp</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span>,y <span class="op">=</span> <span class="va">dlpfc.pp</span><span class="op">[</span><span class="op">-</span><span class="fl">1</span><span class="op">]</span>,</span>
 <span>    add.cell.id <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">dlpfc.pp</span><span class="op">)</span>, project <span class="op">=</span> <span class="st">"dlpfc"</span><span class="op">)</span></span>
 <span><span class="va">dlpfc.merge</span> <span class="op">&lt;-</span> </span>
-<span>    <span class="va">dlpfc.merge</span><span class="op">[</span>,<span class="va">dlpfc.merge</span><span class="op">@</span><span class="va">meta.data</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">'nFeature_'</span>, <span class="fu"><a href="https://mojaveazure.github.io/seurat-object/reference/DefaultAssay.html" class="external-link">DefaultAssay</a></span><span class="op">(</span><span class="va">dlpfc.merge</span><span class="op">)</span><span class="op">)</span><span class="op">]</span> <span class="op">&gt;</span> <span class="fl">200</span><span class="op">]</span></span>
+<span>    <span class="va">dlpfc.merge</span><span class="op">[</span>,<span class="va">dlpfc.merge</span><span class="op">@</span><span class="va">meta.data</span><span class="op">[</span>,<span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">'nFeature_'</span>, <span class="fu"><a href="https://rdrr.io/pkg/SeuratObject/man/DefaultAssay.html" class="external-link">DefaultAssay</a></span><span class="op">(</span><span class="va">dlpfc.merge</span><span class="op">)</span><span class="op">)</span><span class="op">]</span> <span class="op">&gt;</span> <span class="fl">200</span><span class="op">]</span></span>
 <span><span class="va">dlpfc.merge</span><span class="op">$</span><span class="va">stadiaAnnotation</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/vector.html" class="external-link">as.vector</a></span><span class="op">(</span><span class="va">dlpfc12_stadia</span><span class="op">$</span><span class="va">c_vec</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">dlpfc.merge</span><span class="op">@</span><span class="va">meta.data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
