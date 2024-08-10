@@ -17,7 +17,8 @@ stadia(
   min.spots = 20,
   nfeatures = 2000,
   verbose = TRUE,
-  verbose.in = TRUE
+  verbose.in = TRUE,
+  ncores = NULL
 )
 }
 \arguments{
@@ -46,6 +47,8 @@ stadia(
 \item{verbose}{print information or not.}
 
 \item{verbose.in}{print information or not.}
+
+\item{ncores}{number of cores to use.}
 }
 \value{
 a list of estimated parameters.

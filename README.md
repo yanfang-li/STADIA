@@ -26,7 +26,7 @@ using a Gaussian mixture model with a Potts spatial prior to promote
 local consistency.
 
 The homepage for the R package stadia can be accessed at:
-<https://yanfang-li.github.io/STADIA/index.html>.
+<https://yanfang-li.github.io/STADIA/index.html>. 
 
 ## Installation
 
@@ -56,12 +56,20 @@ conda activate env_stadia
 <!-- BiocManager::install(dependencies[!(dependencies %in% row.names(installed.packages())) & !(dependencies %in% row.names(ap))]) -->
 <!-- ``` -->
 
+It is a good practice to install Bioconductor dependencies before installing package `stadia`. 
+```r
+# Install Bioconductor packages
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager") 
+BiocManager::install(c("BiocSingular", "BiocParallel", "BiocNeighbors"))
+```
+
 The `stadia`’s dependency package `mombf` depends on
 `sparseMatrixStats`, which sometimes cannot be installed automatically,
 so we install `sparseMatrixStats` first to prevent errors later:
 
 ``` r
-if (!requireNamespace("remotes", quietly = TRUE))
+if (!require("BiocManager", quietly = TRUE))
     install.packages("BiocManager")
 BiocManager::install("sparseMatrixStats")
 ```
@@ -76,15 +84,14 @@ remotes::install_github("yanfang-li/STADIA")
 ```
 
 or from the source in the terminal ( [Package
-source](https://drive.google.com/file/d/1_ApLsFLm60Bpf7VQnOE6ZxFSsSil4zHN/view?usp=drive_link)):
+source](https://drive.google.com/file/d/1JUkFWkb-fKyWG7p3n4rGdOjXKknI3Tq8/view?usp=drive_link)):
 
 ``` r
-R CMD INSTALL stadia_1.0.0.tar.gz
+R CMD INSTALL stadia_1.0.1.tar.gz
 ```
 
 or from precompiled binary package ([Windows
-binaries](https://drive.google.com/file/d/1tr6HkGJ_o2mdHGSHAO27qgaATJxCkTIk/view?usp=drive_link),
-[macOS binaries]()):
+binaries](https://drive.google.com/file/d/1itMLR9-o1PT9ZV0P5PeorZeK8ogHHjXz/view?usp=drive_link)):
 
 ``` r
 install.packages("stadia")

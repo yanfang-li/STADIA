@@ -16,6 +16,7 @@
 #' @param nfeatures number of HVGs.
 #' @param verbose print information or not.
 #' @param verbose.in print information or not.
+#' @param ncores number of cores to use.
 #' @return a list of estimated parameters.
 #'
 #' @export
@@ -23,7 +24,7 @@ stadia <- function(object.list, hyper, dim = 35, n_cluster = 7,
                   platform = c("visium", "st", "others"),
                   adj.cutoff = 50, icm.maxiter = 10, em.maxiter = 30,
                   min.features = 200, min.spots = 20, nfeatures = 2000,
-                  verbose = TRUE, verbose.in = TRUE) {
+                  verbose = TRUE, verbose.in = TRUE, ncores=NULL) {
     # dimensions
     d <- dim
     K <- n_cluster
@@ -37,7 +38,11 @@ stadia <- function(object.list, hyper, dim = 35, n_cluster = 7,
 
     ##### utilities
     batch_vec <- rep(seq_along(object.list), times = sapply(object.list, ncol))
-    ncores <- parallel::detectCores()
+    if(is.null(ncores)){
+        ncores <- parallel::detectCores() * 0.8
+    }else{
+        ncores <- ncores
+    }
 
     ######  main
     ## extract coordinates and expression matrix
