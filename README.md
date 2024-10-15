@@ -182,6 +182,4 @@ the `Run` section.
 
 ## Paper Citation
 
-Yanfang Li and Shihua Zhang (2024+). “Statistical batch-aware embedded
-integration, dimension reduction and alignment for spatial
-transcriptomics”.
+Yanfang Li and Shihua Zhang (2024). “Bioinformatics, btae611, https://doi.org/10.1093/bioinformatics/btae611”, Bioinformatics, btae611, https://doi.org/10.1093/bioinformatics/btae611.
